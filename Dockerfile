@@ -19,4 +19,4 @@ EXPOSE 8081
 
 HEALTHCHECK CMD curl --fail http://localhost:8501/_stcore/health
 
-ENTRYPOINT ["streamlit", "run", "main.py", "--server.enableXsrfProtection=false","--server.port=8081", "--server.address=0.0.0.0"]
+ENTRYPOINT ["streamlit", "run", "app.py", "--server.enableXsrfProtection=false","--server.port=8081", "--server.address=0.0.0.0"]

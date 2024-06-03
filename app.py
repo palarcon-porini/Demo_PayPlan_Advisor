@@ -2,15 +2,17 @@ import streamlit as st
 from streamlit.web import cli as stcli
 from streamlit import runtime
 import sys
-from GraphColection.PayPlan import PayPlan_Graph
-from langchain_community.document_loaders import TextLoader ,PyPDFLoader
 from dotenv import load_dotenv
 load_dotenv()
 
+from GraphColection.PayPlan import PayPlan_Graph
+from langchain_community.document_loaders import TextLoader ,PyPDFLoader
+
+
 def Agent_reply():
-    fattura_ = PyPDFLoader(r'C:\Users\PaulHernanAlarconPac\Desktop\Demo_PayPlan_Advisor\output\fattura.pdf ')
+    fattura_ = PyPDFLoader('output/fattura.pdf')
     fattura = fattura_.load()
-    contratto = PyPDFLoader(r'C:\Users\PaulHernanAlarconPac\Desktop\Demo_PayPlan_Advisor\output\contratto.pdf')
+    contratto = PyPDFLoader('output/contratto.pdf')
     contratto = contratto.load()
     flow = PayPlan_Graph()
     State_flow = flow.invoke({'invoice':fattura,'documents':contratto})
